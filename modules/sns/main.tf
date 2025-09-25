@@ -1,0 +1,79 @@
+#################################
+# WEB SNS Topic and Subscription
+#################################
+
+resource "aws_sns_topic" "web_tier_sns" {
+  name = "web-tier-sns"
+
+  delivery_policy = jsonencode({
+    healthyRetryPolicy = {
+      numRetries = 3
+    }
+  })
+
+  tags = {
+    Tier    = "web"
+    Purpose = "web tier alerts"
+  }
+}
+
+resource "aws_sns_topic_subscription" "web_tier_email" {
+  topic_arn = aws_sns_topic.web_tier_sns.arn
+  protocol  = "email"
+  endpoint  = var.alert_email
+}
+
+#################################
+# APP SNS Topic and Subscription
+#################################
+
+resource "aws_sns_topic" "app_tier_sns" {
+  name = "app-tier-sns"
+
+  delivery_policy = jsonencode({
+    healthyRetryPolicy = {
+      numRetries = 3
+    }
+  })
+
+  tags = {
+    Tier    = "app"
+    Purpose = "app tier alerts"
+  }
+}
+
+resource "aws_sns_topic_subscription" "app_tier_email" {
+  topic_arn = aws_sns_topic.app_tier_sns.arn
+  protocol  = "email"
+  endpoint  = var.alert_email
+}
+
+#################################
+# DB SNS Topic and Subscription
+#################################
+
+resource "aws_sns_topic" "cloudwatch_sns" {
+  name = "cloudwatch-sns"
+
+  delivery_policy = jsonencode({
+    healthyRetryPolicy = {
+      numRetries = 5,
+      minDelayTarget = 20,
+      maxDelayTarget = 300,
+      numMaxDelayRetries = 3,
+      numMinDelayRetries = 2,
+      backoffFunction = "linear"
+    }
+  })
+
+  tags = {
+    Tier    = "monitoring"
+    Purpose = "CloudWatch alerts"
+  }
+}
+
+resource "aws_sns_topic_subscription" "cloudwatch_email" {
+  topic_arn = aws_sns_topic.cloudwatch_sns.arn
+  protocol  = "email"
+  endpoint  = var.alert_email
+}

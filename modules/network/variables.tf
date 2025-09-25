@@ -1,0 +1,13 @@
+variable "region" {}
+variable "vpc_cidr" {}
+variable "env" {}
+variable "pub_sub_1_cidr" {}
+variable "pub_sub_2_cidr" {}
+variable "web_sub_1_cidr" {}
+variable "web_sub_2_cidr" {}
+variable "app_sub_1_cidr" {}
+variable "app_sub_2_cidr" {}
+variable "db_sub_1_cidr" {}
+variable "db_sub_2_cidr" {}
+variable "nat_gw_1_id" {}
+variable "nat_gw_2_id" {}
