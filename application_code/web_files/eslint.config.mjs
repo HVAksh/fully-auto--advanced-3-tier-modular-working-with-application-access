@@ -15,35 +15,40 @@ export default [
       "coverage/",
       "*.min.js",
       "**/vendor/",
-      "public/*", // Ignore public folder (e.g., index.html)
+      "public/*",
     ],
   },
   {
     files: ["**/*.{js,mjs,cjs,jsx}"],
     languageOptions: {
-      globals: globals.browser,
+      sourceType: "module",
+      globals: {
+        ...globals.browser,
+        ...globals.node, // Add node globals for build scripts
+      },
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: "module",
-        ecmaFeatures: { jsx: true }, // Enable JSX parsing
+        ecmaFeatures: { jsx: true },
       },
     },
     plugins: {
       react: reactPlugin,
-      "react-hooks": reactHooks, // Add react-hooks plugin
+      "react-hooks": reactHooks,
     },
     settings: {
       react: {
-        version: "detect", // Automatically detect React version
+        version: "detect",
       },
     },
     rules: {
       ...js.configs.recommended.rules,
       ...reactPlugin.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      "react/prop-types": "off", // Disable prop-types if not used
-      "react/jsx-uses-react": "off", // Not needed with React 17+
-      "react/react-in-jsx-scope": "off", // Not needed with React 17+
+      "react/prop-types": "off",
+      "react/jsx-uses-react": "off",
+      "react/react-in-jsx-scope": "off",
+      "no-unused-vars": ["error", { vars: "all", args: "none" }],
     },
   },
   {
@@ -53,7 +58,7 @@ export default [
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: "module",
-        ecmaFeatures: { jsx: true }, // Enable JSX for TypeScript
+        ecmaFeatures: { jsx: true },
       },
     },
     plugins: {
