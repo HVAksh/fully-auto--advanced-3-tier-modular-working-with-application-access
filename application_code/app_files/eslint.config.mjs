@@ -1,4 +1,7 @@
-import { defineConfig } from "@eslint/config";
+// eslint.config.mjs
+
+import eslint from "eslint"; // ✅ Import the entire module
+const { defineConfig } = eslint; // ✅ Destructure defineConfig
 
 import js from "@eslint/js";
 import globals from "globals";
