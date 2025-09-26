@@ -56,6 +56,7 @@ if check_ami_exists "$FRONTEND_AMI_ID"; then
 else
     echo "🚀 Building new Frontend AMI..."
     cd packer/frontend
+    chmod +x ./build_ami.sh
     ./build_ami.sh
     cd ../..
 fi
@@ -72,6 +73,7 @@ if check_ami_exists "$BACKEND_AMI_ID"; then
 else
     echo "🚀 Building new Backend AMI..."
     cd packer/backend
+    chmod +x ./build_ami.sh
     ./build_ami.sh
     cd ../..
 fi
