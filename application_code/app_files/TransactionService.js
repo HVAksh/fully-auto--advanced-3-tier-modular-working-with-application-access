@@ -13,7 +13,7 @@ function addTransaction(amount, desc) {
   const query = 'INSERT INTO `transactions` (`amount`, `description`) VALUES (?, ?)';
   con.query(query, [amount, desc], (err, result) => {
     if (err) throw err;
-    console.log('Adding to the table should have worked:', result.affectedRows); // Use result
+    console.log('Adding to the table should have worked:', result.affectedRows);
   });
   return 200;
 }
