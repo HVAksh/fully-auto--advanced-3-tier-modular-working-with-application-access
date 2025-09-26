@@ -4,13 +4,6 @@
 
 resource "aws_sns_topic" "web_tier_sns" {
   name = "web-tier-sns"
-
-  delivery_policy = jsonencode({
-    healthyRetryPolicy = {
-      numRetries = 3
-    }
-  })
-
   tags = {
     Tier    = "web"
     Purpose = "web tier alerts"

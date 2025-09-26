@@ -18,7 +18,7 @@ output "cloudtrail_to_cw_role_arn" {
   value = aws_iam_role.cloudtrail_to_cw.arn
 }
 output "flow_logs_role_arn" {
-  value = aws_iam_role.cloudtrail_to_cw.arn
+  value = aws_iam_role.flow_logs_role.arn
 }
 # output "restore_role_arn" {
 #   description = "ARN of the IAM role for AWS Backup"
