@@ -1,3 +1,6 @@
+import eslint from "eslint";
+const { defineConfig } = eslint;
+
 import { defineConfig } from "eslint";
 import js from "@eslint/js";
 import globals from "globals";
