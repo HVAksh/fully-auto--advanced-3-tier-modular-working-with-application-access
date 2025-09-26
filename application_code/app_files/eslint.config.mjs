@@ -1,33 +1,37 @@
-// eslint.config.mjs
+// app_files/eslint.config.mjs
 import js from "@eslint/js";
 import globals from "globals";
 import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
-import reactPlugin from "eslint-plugin-react";
 
 export default [
   {
-    // Global ignores (replaces .eslintignore)
     ignores: [
       "node_modules/",
       "dist/",
       "build/",
-      "*.min.js",
       "coverage/",
+      "*.min.js",
       "**/vendor/",
     ],
   },
   {
     files: ["**/*.{js,mjs,cjs}"],
     languageOptions: {
-      globals: globals.browser,
+      sourceType: "commonjs", // Explicitly set to CommonJS
+      globals: {
+        ...globals.node, // Includes module, require, exports, etc.
+      },
       parserOptions: {
         ecmaVersion: 2020,
-        sourceType: "module",
       },
     },
     rules: {
       ...js.configs.recommended.rules,
+      "no-unused-vars": ["error", { vars: "all", args: "none" }],
+      "no-cond-assign": "error",
+      "no-constant-condition": "error",
+      "no-dupe-keys": "error",
     },
   },
   {
@@ -41,11 +45,9 @@ export default [
     },
     plugins: {
       "@typescript-eslint": tsPlugin,
-      react: reactPlugin,
     },
     rules: {
       ...tsPlugin.configs.recommended.rules,
-      ...reactPlugin.configs.recommended.rules,
     },
   },
 ];
