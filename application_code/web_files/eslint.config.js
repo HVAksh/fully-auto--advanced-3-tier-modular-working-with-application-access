@@ -1,12 +1,12 @@
-// web_files/eslint.config.mjs
-import js from "@eslint/js";
-import globals from "globals";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import reactPlugin from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
+// web_files/eslint.config.js
+const js = require("@eslint/js");
+const globals = require("globals");
+const tsPlugin = require("@typescript-eslint/eslint-plugin");
+const tsParser = require("@typescript-eslint/parser");
+const reactPlugin = require("eslint-plugin-react");
+const reactHooks = require("eslint-plugin-react-hooks");
 
-export default [
+module.exports = [
   {
     ignores: [
       "node_modules/",
@@ -24,7 +24,7 @@ export default [
       sourceType: "module",
       globals: {
         ...globals.browser,
-        ...globals.node, // Add node globals for build scripts
+        ...globals.node,
       },
       parserOptions: {
         ecmaVersion: 2020,
