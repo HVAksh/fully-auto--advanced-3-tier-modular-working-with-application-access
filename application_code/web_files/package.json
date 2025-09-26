@@ -10,7 +10,7 @@
     "react-dom": "^18.1.0",
     "react-focus-lock": "^2.5.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^0.0.0",
+    "react-scripts": "^5.0.1",
     "styled-components": "^5.2.1",
     "web-vitals": "^2.1.4"
   },
@@ -22,16 +22,8 @@
     "lint": "eslint ."
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
   },
   "homepage": ".",
   "devDependencies": {
@@ -40,6 +32,7 @@
     "@typescript-eslint/parser": "^8.44.1",
     "eslint": "^9.36.0",
     "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^16.4.0",
     "typescript-eslint": "^8.44.1"
   }
