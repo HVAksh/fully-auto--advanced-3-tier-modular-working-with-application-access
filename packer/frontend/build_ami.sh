@@ -2,9 +2,9 @@
 set -e
 
 AWS_REGION="ap-south-1"
-AMI_FILE="../../terraform/compute/ami_ids/frontend_ami.txt"
+AMI_FILE="../../modules/asg/ami_ids/frontend_ami.txt"
 
-mkdir -p ../../terraform/compute/ami_ids
+mkdir -p ../../modules/asg/ami_ids
 
 packer init .
 AMI_ID=$(packer build -machine-readable -var aws_region=$AWS_REGION frontend.json | awk -F, '$0 ~/artifact,0,id/ {print $6}' | cut -d: -f2)
