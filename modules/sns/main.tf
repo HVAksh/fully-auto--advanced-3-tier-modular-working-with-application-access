@@ -23,12 +23,6 @@ resource "aws_sns_topic_subscription" "web_tier_email" {
 resource "aws_sns_topic" "app_tier_sns" {
   name = "app-tier-sns"
 
-  delivery_policy = jsonencode({
-    healthyRetryPolicy = {
-      numRetries = 3
-    }
-  })
-
   tags = {
     Tier    = "app"
     Purpose = "app tier alerts"
@@ -47,17 +41,6 @@ resource "aws_sns_topic_subscription" "app_tier_email" {
 
 resource "aws_sns_topic" "cloudwatch_sns" {
   name = "cloudwatch-sns"
-
-  delivery_policy = jsonencode({
-    healthyRetryPolicy = {
-      numRetries = 5,
-      minDelayTarget = 20,
-      maxDelayTarget = 300,
-      numMaxDelayRetries = 3,
-      numMinDelayRetries = 2,
-      backoffFunction = "linear"
-    }
-  })
 
   tags = {
     Tier    = "monitoring"
