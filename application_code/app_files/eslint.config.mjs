@@ -18,7 +18,7 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs}"],
     languageOptions: {
-      sourceType: "commonjs", // Explicitly set to CommonJS
+      sourceType: "commonjs", // Support CommonJS for .js files
       globals: {
         ...globals.node, // Includes module, require, exports, etc.
       },
