@@ -39,7 +39,7 @@
                 await new Promise(resolve => setTimeout(resolve, 1000)); 
                 return await this.fetch_retry(url, n - 1);
             }
-        };
+        }
 
 
           renderTableData() {
