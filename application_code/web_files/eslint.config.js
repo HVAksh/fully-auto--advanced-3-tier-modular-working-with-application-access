@@ -25,6 +25,7 @@ module.exports = [
       globals: {
         ...globals.browser,
         ...globals.node,
+        ...globals.jest, // Add Jest globals for test files
       },
       parserOptions: {
         ecmaVersion: 2020,
@@ -49,6 +50,7 @@ module.exports = [
       "react/jsx-uses-react": "off",
       "react/react-in-jsx-scope": "off",
       "no-unused-vars": ["error", { vars: "all", args: "none" }],
+      "no-extra-semi": "error",
     },
   },
   {
