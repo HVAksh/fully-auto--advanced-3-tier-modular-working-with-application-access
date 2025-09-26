@@ -1,3 +1,4 @@
+// app_files/index.js
 const transactionService = require('./TransactionService');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -9,9 +10,6 @@ const port = 4000;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
-
-// ROUTES FOR OUR API
-// =======================================================
 
 // Health Checking
 app.get('/health', (req, res) => {
@@ -66,7 +64,7 @@ app.delete('/transaction', (req, res) => {
 // DELETE ONE TRANSACTION
 app.delete('/transaction/:id', (req, res) => {
   try {
-    const { id } = req.params; // Use URL parameter instead of req.body
+    const { id } = req.params;
     if (!id) {
       return res.status(400).json({ message: 'Transaction ID is required' });
     }
@@ -81,7 +79,7 @@ app.delete('/transaction/:id', (req, res) => {
 // GET SINGLE TRANSACTION
 app.get('/transaction/:id', (req, res) => {
   try {
-    const { id } = req.params; // Use URL parameter instead of req.body
+    const { id } = req.params;
     if (!id) {
       return res.status(400).json({ message: 'Transaction ID is required' });
     }
