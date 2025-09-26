@@ -47,8 +47,8 @@ check_ami_exists() {
 # --- Frontend AMI ---
 print_section "Checking Frontend AMI"
 FRONTEND_AMI_ID=""
-if [ -f "terraform/compute/ami_ids/frontend_ami.txt" ]; then
-    FRONTEND_AMI_ID=$(cat terraform/compute/ami_ids/frontend_ami.txt)
+if [ -f "modules/asg/ami_ids/frontend_ami.txt" ]; then
+    FRONTEND_AMI_ID=$(cat modules/asg/ami_ids/frontend_ami.txt)
 fi
 
 if check_ami_exists "$FRONTEND_AMI_ID"; then
@@ -64,8 +64,8 @@ fi
 # --- Backend AMI ---
 print_section "Checking Backend AMI"
 BACKEND_AMI_ID=""
-if [ -f "terraform/compute/ami_ids/backend_ami.txt" ]; then
-    BACKEND_AMI_ID=$(cat terraform/compute/ami_ids/backend_ami.txt)
+if [ -f "modules/asg/ami_ids/backend_ami.txt" ]; then
+    BACKEND_AMI_ID=$(cat modules/asg/ami_ids/backend_ami.txt)
 fi
 
 if check_ami_exists "$BACKEND_AMI_ID"; then
