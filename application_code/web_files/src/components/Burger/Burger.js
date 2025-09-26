@@ -1,9 +1,7 @@
-import React from 'react';
 import { bool, func } from 'prop-types';
 import { StyledBurger } from './Burger.styled';
 
 const Burger = ({ open, setOpen, ...props }) => {
-  
   const isExpanded = open ? true : false;
   
   return (
@@ -12,8 +10,8 @@ const Burger = ({ open, setOpen, ...props }) => {
       <span />
       <span />
     </StyledBurger>
-  )
-}
+  );
+};
 
 Burger.propTypes = {
   open: bool.isRequired,
