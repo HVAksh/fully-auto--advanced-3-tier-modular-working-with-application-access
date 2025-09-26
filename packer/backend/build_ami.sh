@@ -2,14 +2,14 @@
 set -e
 
 AWS_REGION="ap-south-1"
-AMI_FILE="../../terraform/compute/ami_ids/backend_ami.txt"
+AMI_FILE="../../modules/asg/ami_ids/backend_ami.txt"
 LOG_FILE="packer_build.log"
 
 echo "🚀 Building Backend AMI based on Amazon Linux 2023 (kernel 6.1)..."
 echo "Source AMI: ami-0533167fcff018a86"
 echo "Region: $AWS_REGION"
 
-mkdir -p ../../terraform/compute/ami_ids
+mkdir -p ../../modules/asg/ami_ids
 
 # Build the AMI and capture output
 packer build -var aws_region=$AWS_REGION backend.json 2>&1 | tee $LOG_FILE
