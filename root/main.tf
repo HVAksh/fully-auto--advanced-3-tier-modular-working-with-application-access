@@ -83,7 +83,8 @@ module "asg" {
   depends_on = [
     module.db-rds,
     module.secret-manager,
-    module.alb
+    module.alb,
+    module.IAM
   ]
 
 }
@@ -107,6 +108,9 @@ module "db-rds" {
   db_sub_2_id = module.network.db_sub_2_id
   db_sg_id    = module.security_group.db_sg_id
   db_password = module.secret-manager.db_password
+  depends_on = [ 
+    module.secret-manager,
+    module.network ]
 }
 
 
@@ -139,6 +143,7 @@ module "waf-cloudfront" {
   subject_alternative_names   = var.subject_alternative_name
   web_alb_dns_name    = module.alb.web_alb_dns_name
   certificate_arn         = module.acm.certificate_arn
+
 }
 
 module "monitoring" {
@@ -149,6 +154,10 @@ module "monitoring" {
   project_name              = var.project_name
   flow_logs_role_arn        = module.IAM.flow_logs_role_arn
   cloudtrail_to_cw_role_arn = module.IAM.cloudtrail_to_cw_role_arn
+
+depends_on = [ 
+  module.network,
+  module.IAM ]
 }
 
 module "sns" {
