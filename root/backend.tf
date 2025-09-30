@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "multi-region-s3-bukt"
-    key    = "backend/3tier-MR.tfstate"
+    bucket = "terraform-slbkt"
+    key    = "tfstate/statefile.tfstate"
     region = "ap-south-1"
   }
 }
