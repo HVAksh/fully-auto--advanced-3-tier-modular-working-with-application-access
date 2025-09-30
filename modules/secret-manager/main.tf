@@ -1,7 +1,7 @@
 resource "random_password" "db_password" {
   length           = 20
   special          = true
-  override_special = "!@#%^&*()-_=+[]{}"
+  override_special = "!#%^&*()-_=+[]{}"
   upper            = true
   lower            = true
   numeric           = true
@@ -14,6 +14,9 @@ resource "random_password" "db_password" {
 resource "aws_secretsmanager_secret" "db_credentials" {
   name        = "${var.project_name}-db-credentials"
   description = "Database credentials for Aurora DB"
+    lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_secretsmanager_secret_version" "db_credentials_version" {

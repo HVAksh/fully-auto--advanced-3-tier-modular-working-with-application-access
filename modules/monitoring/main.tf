@@ -87,7 +87,7 @@ resource "aws_cloudtrail" "main" {
 ##############################
 
 resource "aws_cloudwatch_log_group" "vpc_flow_logs" {
-  name              = "/aws/vpc-flow/${var.project_name}-${var.env}"
+  name              = "/aws/vpc-flow-log/${var.project_name}-${var.env}"
   retention_in_days = 30
 }
 
